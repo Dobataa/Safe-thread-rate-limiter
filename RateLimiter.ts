@@ -1,9 +1,8 @@
-class RateLimiter{
-    maxRequests: number;
-    window: number;
-    users: Map<string, Map<number, {count: number}>>
-    bucketSize: number
-
+export class RateLimiter{
+    private maxRequests: number;
+    private window: number;
+    private users: Map<string, Map<number, {count: number}>>
+    private bucketSize: number
 
     constructor(maxRequests: number, window: number){
         if(maxRequests <= 0){
