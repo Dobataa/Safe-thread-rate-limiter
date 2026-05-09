@@ -32,7 +32,7 @@ export class RateLimiter{
         const oldestAllowedBucket = currentBucket - Math.floor(this.window / this.bucketSize);
 
         for(const bucketId of buckets.keys()){
-            if(bucketId < oldestAllowedBucket){
+            if(bucketId <= oldestAllowedBucket){
                 buckets.delete(bucketId);
             }
         }

@@ -103,4 +103,14 @@ describe("RateLimiter with fake timers", () => {
       expect(count).toBe(5);
     }
   });
+
+  test("request exactly at window boundary expires", () => {
+    const limiter = new RateLimiter(1, 10);
+
+    expect(limiter.allowRequest("u1")).toBe(true);
+
+    jest.advanceTimersByTime(10_000);
+
+    expect(limiter.allowRequest("u1")).toBe(true);
+  });
 });
